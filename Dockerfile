@@ -17,6 +17,8 @@ COPY . /app
 # Create JAR File
 RUN mvn clean install -DskipTests=true
 
+#CMD ["java", "-jar", "/expenseapp.jar"]
+
 #--------------------------------------------
 # Stage 2 - Execute JAR File from above stage
 #--------------------------------------------
@@ -36,4 +38,5 @@ COPY --from=builder /app/target/*.jar /app/target/expenseapp.jar
 EXPOSE 8080
 
 # Start the application
+
 CMD [ "java", "-jar", "/app/target/expenseapp.jar" ]
